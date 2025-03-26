@@ -1,0 +1,48 @@
+DEBUT(LANG='FR')
+
+script_dir = "YOUR PATH WITH CODES HERE"
+import sys
+sys.path.append(
+    f'{script_dir}'
+)
+from ROT_VEC_V2 import rot_vec_v2
+
+MESH = LIRE_MAILLAGE(UNITE=3)
+
+MESH = DEFI_GROUP(
+    reuse=MESH,
+    MAILLAGE=MESH,
+    CREA_GROUP_MA=(
+        _F(NOM='MESH_QUAD4', TOUT='OUI', TYPE_MAILLE='QUAD4'),
+        _F(NOM='MESH_HEXA8', TOUT='OUI', TYPE_MAILLE='HEXA8')
+    ),
+)
+
+MODEL = AFFE_MODELE(AFFE=_F(MODELISATION=('3D', ),
+                            PHENOMENE='MECANIQUE',
+                            TOUT='OUI'),
+                    MAILLAGE=MESH)
+GROUP_Q4 = "FACE_ALL"
+GROUP_Q4_INT = "PI"
+GROUP_HEX8 = "VolTot"
+
+DF1 = rot_vec_v2(
+    script_dir,
+    MESH,
+    GROUP_Q4,
+    GROUP_Q4_INT,
+    GROUP_HEX8,
+    FIND_HEXA_BY_FACE=True
+)
+ 
+ELEMPROP = AFFE_CARA_ELEM(
+            MASSIF=[
+                _F(ANGL_REP=(row["Alpha"],row["Betta"], 0.0), MAILLE=row["M_ID"]) for _, row in DF1.iterrows()
+            ],
+            MODELE=MODEL)
+            
+
+IMPR_CONCEPT(CONCEPT=_F(CARA_ELEM=ELEMPROP, MODELE=MODEL, REPERE_LOCAL='ELEM'),
+                UNITE=81)
+
+FIN()
