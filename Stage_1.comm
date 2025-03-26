@@ -1,4 +1,11 @@
 DEBUT(LANG='FR')
+"""
+TITLE: An open-source finite element toolbox for anisotropic creep and
+        irradiation growth in Zrly-2: Application to cladding tube and spacer
+        grid in fuel rod assembly
+AUTHORS: Fabrizio Aguzzi, Santiago M. Rabazzi, Martín Armoa, César Pairetti and Alejandro
+         E. Albanesi
+"""
 
 script_dir = "YOUR PATH WITH CODES HERE"
 import sys
