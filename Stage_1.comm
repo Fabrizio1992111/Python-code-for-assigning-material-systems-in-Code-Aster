@@ -29,9 +29,18 @@ MODEL = AFFE_MODELE(AFFE=_F(MODELISATION=('3D', ),
                             PHENOMENE='MECANIQUE',
                             TOUT='OUI'),
                     MAILLAGE=MESH)
-GROUP_Q4 = "FACE_ALL"
-GROUP_Q4_INT = "PI"
-GROUP_HEX8 = "VolTot"
+
+
+###############################################################################################################
+#You must create these groups in your mesh
+###############################################################################################################
+
+
+GROUP_Q4 = "FACE_ALL"     # group of all “faces” of the mesh
+GROUP_Q4_INT = "PI"       # face type group to be used as a reference for calculating the normal to the surface
+GROUP_HEX8 = "VolTot"     # group of all “volumes” of the mesh
+
+###############################################################################################################
 
 DF1 = rot_vec_v2(
     script_dir,
