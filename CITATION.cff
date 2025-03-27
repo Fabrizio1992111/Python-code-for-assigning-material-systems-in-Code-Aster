@@ -1,1 +1,11 @@
+cff-version: 1.2.0
+title: "An open-source finite element toolbox for anisotropic creep and
+irradiation growth in Zrly-2: Application to cladding tube and spacer
+grid in fuel rod assembly"
+authors:
+  - family-names: "Aguzzi"
+    given-names: "Fabrizio"
+version: "1.0"
+url: "https://github.com/Fabrizio1992111/Python-code-for-assigning-material-systems-in-Code-Aster/blob/main/README.md"  # Enlace al repositorio o al trabajo en línea.
+publisher: "Fabrizio Aguzzi"
 
